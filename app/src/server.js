@@ -368,6 +368,7 @@ app.use(cors(corsOptions)); // Enable CORS with options
 app.use(compression()); // Compress all HTTP responses using GZip
 app.use(express.json()); // Api parse body data as json
 app.use(express.static(dir.public)); // Use all static files from the public folder
+app.use('/react', express.static(path.join(__dirname, '../../', 'react-demo/dist')));
 app.use(bodyParser.urlencoded({ extended: true })); // Need for Slack API body parser
 app.use(apiBasePath + '/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument)); // api docs
 
@@ -441,11 +442,9 @@ app.get('/profile', OIDCAuth, (req, res) => {
     res.sendFile(views.notFound);
 });
 
-app.get(['/react'], (req, res) => {
+app.get('/react', (req, res) => {
     res.sendFile(path.join(__dirname, '../../', 'react-demo/dist/index.html'));
 })
-
-app.use('/react', express.static(path.join(__dirname, '../../', 'react-demo/dist')));
 
 // Authentication Callback Route
 app.get('/auth/callback', (req, res, next) => {

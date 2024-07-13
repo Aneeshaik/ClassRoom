@@ -13,7 +13,7 @@ const notFoundTitle = document.getElementById('stunTurnTitle');
 const shortcutIcon = document.getElementById('shortcutIcon');
 const appleTouchIcon = document.getElementById('appleTouchIcon');
 
-const appTitle = document.getElementById('appTitle');
+// const appTitle = document.getElementById('appTitle');
 const appDescription = document.getElementById('appDescription');
 
 const features = document.getElementById('features');

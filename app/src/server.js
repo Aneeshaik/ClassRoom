@@ -441,6 +441,12 @@ app.get('/profile', OIDCAuth, (req, res) => {
     res.sendFile(views.notFound);
 });
 
+app.get(['/react'], (req, res) => {
+    res.sendFile(path.join(__dirname, '../../', 'react-demo/dist/index.html'));
+})
+
+app.use('/react', express.static(path.join(__dirname, '../../', 'react-demo/dist')));
+
 // Authentication Callback Route
 app.get('/auth/callback', (req, res, next) => {
     next(); // Let express-openid-connect handle this route
